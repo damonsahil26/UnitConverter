@@ -100,11 +100,13 @@ select {
 .tab {
     overflow: hidden;
     font-size: larger;
+    border: 1px solid transparent;
     text-align: left;
 }
 
     .tab button {
         background-color: transparent;
+        border: 1px solid transparent;
         cursor: pointer;
         padding: 14px 16px;
         transition: 0.3s;
@@ -131,3 +133,7 @@ select {
             color: lightgreen;
             text-decoration: underline;
         }
+
+button:focus, button:focus-visible {
+    outline: none !important;
+}
