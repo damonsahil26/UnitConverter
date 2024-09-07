@@ -24,7 +24,7 @@ To run this application, follow these steps:
 
 1. Clone this repository:
     ```bash
-    git clone https://github.com/damonsahil26/UnitConvertor.git
+    git clone https://github.com/damonsahil26/UnitConverter.git
     ```
 
 2. Navigate to the project directory:
