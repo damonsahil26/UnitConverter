@@ -137,3 +137,8 @@ select {
 button:focus, button:focus-visible {
     outline: none !important;
 }
+
+.errorMessage{
+    font-size:small;
+    color:cyan;
+}

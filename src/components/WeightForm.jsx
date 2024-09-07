@@ -2,7 +2,7 @@ import { useForm } from "react-hook-form"
 
 
 export default function WeightForm() {
-    const { register, handleSubmit } = useForm()
+    const { register, handleSubmit, formState: { errors } } = useForm()
     const onSubmit = (data) => console.log(data)
 
 
@@ -10,12 +10,13 @@ export default function WeightForm() {
         <form className="form playpen-sans-cursive" onSubmit={handleSubmit(onSubmit)}>
             <label className="">Enter the weight to convert : </label>
             <br />
-            <input className="inputBox" {...register("unit")} />
+            <input type="number" className="inputBox" {...register("unitValue", { required: true, valueAsNumber: true })} />
+            {errors.unitValue && <span className="errorMessage"><br /> * This field is required</span>}
             <br />
             <br />
             <label className="">Unit to convert from : </label>
             <br />
-            <select id="weightUnitConvertFrom">
+            <select id="weightUnitConvertFrom" {...register("weightFrom")}>
                 <option value="tonne">Tonne</option>
                 <option value="kilogram">Kilogram</option>
                 <option value="gram">Gram</option>
@@ -31,9 +32,9 @@ export default function WeightForm() {
             <br />
             <label className="">Unit to convert to : </label>
             <br />
-            <select id="weightUnitConvertTo">
+            <select id="weightUnitConvertTo" {...register("weightTo")}>
                 <option value="tonne">Tonne</option>
-                <option value="kilogram">Kilogram</option>
+                <option value="kilogram" selected>Kilogram</option>
                 <option value="gram">Gram</option>
                 <option value="milligram">Milligram</option>
                 <option value="microgram">Microgram</option>

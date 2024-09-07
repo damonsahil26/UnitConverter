@@ -2,7 +2,7 @@ import { useForm } from "react-hook-form"
 
 
 export default function LengthForm() {
-    const { register, handleSubmit } = useForm()
+    const { register, handleSubmit, formState: { errors } } = useForm()
     const onSubmit = (data) => console.log(data)
 
 
@@ -10,12 +10,13 @@ export default function LengthForm() {
         <form className="form playpen-sans-cursive" onSubmit={handleSubmit(onSubmit)}>
             <label className="">Enter the length to convert : </label>
             <br />
-            <input className="inputBox" {...register("unit")} />
+            <input className="inputBox" type="number" {...register("unitValue", { required: true, valueAsNumber: true })} />
+            {errors.unitValue && <span className="errorMessage"><br /> * This field is required</span>}
             <br />
             <br />
             <label className="">Unit to convert from : </label>
             <br />
-            <select id="lengthUnitConvertFrom">
+            <select id="lengthUnitConvertFrom" {...register("lengthFrom")}>
                 <option value="kilometer">Kilometer</option>
                 <option value="meter">Meter</option>
                 <option value="centimeter">Centimeter</option>
@@ -32,9 +33,9 @@ export default function LengthForm() {
             <br />
             <label className="">Unit to convert to : </label>
             <br />
-            <select id="lengthUnitConvertTo">
+            <select id="lengthUnitConvertTo" {...register("lengthTo")}>
                 <option value="kilometer">Kilometer</option>
-                <option value="meter">Meter</option>
+                <option value="meter" selected>Meter</option>
                 <option value="centimeter">Centimeter</option>
                 <option value="millimeter">Millimeter</option>
                 <option value="micrometer">Micrometer</option>
