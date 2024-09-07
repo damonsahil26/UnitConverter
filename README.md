@@ -42,7 +42,7 @@ To run this application, follow these steps:
     npm run dev
     ```
 
-The application will run at `[http://localhost:5173/](http://localhost:5173/)` by default.
+The application will run at `http://localhost:5173/` by default.
 
 ## Usage
 
