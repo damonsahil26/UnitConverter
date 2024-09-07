@@ -1,9 +1,16 @@
 import { useForm } from "react-hook-form"
 
 
-export default function TempForm() {
+export default function TempForm({ updateResultStateChange, updateConvertChange }) {
     const { register, handleSubmit, formState: { errors } } = useForm()
-    const onSubmit = (data) => console.log(data)
+    const onSubmit = (data) => {
+        showResultPage(data);
+        console.log(data);
+    }
+    const showResultPage = (data) => {
+        updateConvertChange({ unitValue: data.unitValue, lengthFrom: data.tempFrom, lengthTo: data.tempTo, result: 0 });
+        updateResultStateChange(true);
+    };
 
 
     return (
@@ -18,7 +25,7 @@ export default function TempForm() {
             <br />
             <select id="temperatureUnitConvertFrom" {...register("tempFrom")}>
                 <option value="degreecelsius">Degree Celsius</option>
-                <option value="fehrenheit">Fahrenheit</option>
+                <option value="fahrenheit">Fahrenheit</option>
                 <option value="kelvin">Kelvin</option>
             </select>
             <br />
@@ -27,7 +34,7 @@ export default function TempForm() {
             <br />
             <select id="temperatureUnitConvertTo" {...register("tempTo")}>
                 <option value="degreecelsius">Degree Celsius</option>
-                <option value="fehrenheit" selected>Fahrenheit</option>
+                <option value="fahrenheit" selected>Fahrenheit</option>
                 <option value="kelvin">Kelvin</option>
             </select>
             <br />

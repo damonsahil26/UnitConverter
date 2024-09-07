@@ -1,10 +1,16 @@
 import { useForm } from "react-hook-form"
 
 
-export default function LengthForm() {
+export default function LengthForm({ updateResultStateChange, updateConvertChange }) {
     const { register, handleSubmit, formState: { errors } } = useForm()
-    const onSubmit = (data) => console.log(data)
-
+    const onSubmit = (data) => {
+        showResultPage(data);
+        console.log(data);
+    }
+    const showResultPage = (data) => {
+        updateConvertChange({ unitValue: data.unitValue, lengthFrom: data.lengthFrom, lengthTo : data.lengthTo, result : 0});
+        updateResultStateChange(true);
+    };
 
     return (
         <form className="form playpen-sans-cursive" onSubmit={handleSubmit(onSubmit)}>

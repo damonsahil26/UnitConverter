@@ -1,9 +1,16 @@
 import { useForm } from "react-hook-form"
 
 
-export default function WeightForm() {
+export default function WeightForm({ updateResultStateChange, updateConvertChange }) {
     const { register, handleSubmit, formState: { errors } } = useForm()
-    const onSubmit = (data) => console.log(data)
+    const onSubmit = (data) => {
+        showResultPage(data);
+        console.log(data);
+    }
+    const showResultPage = (data) => {
+        updateConvertChange({ unitValue: data.unitValue, lengthFrom: data.weightFrom, lengthTo: data.weightTo, result: 0 });
+        updateResultStateChange(true);
+    };
 
 
     return (
