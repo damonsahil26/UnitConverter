@@ -1,4 +1,8 @@
-export default function ResultPage({ userVal, from, to }) {
+export default function ResultPage({ userVal, from, to, updateResetFormChange }) {
+    var resetForm = () => {
+        updateResetFormChange();
+    }
+
     const conversionFactors = {
         kilometer: 1000,
         meter: 1,
@@ -75,7 +79,7 @@ export default function ResultPage({ userVal, from, to }) {
             <br />
             <br />
             <br />
-            <button type="button" className="button">Reset</button>
+            <button type="button" className="button" onClick={ resetForm}>Reset</button>
         </div>
     </>
 }

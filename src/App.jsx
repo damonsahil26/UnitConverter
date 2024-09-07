@@ -16,6 +16,11 @@ function App() {
         setResult(newState);
     };
 
+    const handleResetFormChange = () => {
+        setResult(false);
+        setCurrentTabAsLength();
+    }
+
     const handleConvertChange = (newState) => {
         setConvertVal(newState);
     };
@@ -60,7 +65,7 @@ function App() {
                 {currentTab == "lengthTab" ? <LengthForm updateResultStateChange={handleShowResultChange} updateConvertChange={ handleConvertChange } /> : null}
                 {currentTab == "weightTab" ? < WeightForm updateResultStateChange={handleShowResultChange} updateConvertChange={handleConvertChange} /> : null}
                 {currentTab == "tempTab" ? <TempForm updateResultStateChange={handleShowResultChange} updateConvertChange={handleConvertChange} /> : null}
-                {showResult ? <ResultPage userVal={convertObj.unitValue} from={convertObj.lengthFrom} to={convertObj.lengthTo} /> : null}
+                {showResult ? <ResultPage userVal={convertObj.unitValue} from={convertObj.lengthFrom} to={convertObj.lengthTo} updateResetFormChange={ handleResetFormChange} /> : null}
             </div>
         </>
     )
